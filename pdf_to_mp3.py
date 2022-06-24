@@ -1,4 +1,5 @@
 Wanderer, [Чт 23.06.22 22:16]
+from http.client import FOUND
 from statistics import mode
 from gtts import gTTS
 from art import tprint
@@ -9,8 +10,8 @@ def pdf_to_mp3(file_path='test.pdf', language='ru'):
     if Path(file_path).is_file() and Path(file_path).suffix == '.pdf':
         #return 'File exits!'
 
-        print(f'[+] Original file: {Path(file_path).name}')
-        print(f'[+] Processing...')
+        print(f'- Original file: {Path(file_path).name}')
+        print(f'- Processing...')
 
         with pdfplumber.PDF(open(file=file_path, mode='rb')) as pdf:
             pages = [page.extract_text() for page in pdf.pages]
@@ -34,7 +35,10 @@ def pdf_to_mp3(file_path='test.pdf', language='ru'):
         return 'File not exits, check the file path'
 
 def main():
-    print(pdf_to_mp3(file_path='C:/Users/User/Desktop/arbeiten/eko.pdf'))     
+    tprint('PDF_TO_MP3', font='bulbhead')
+    file_path = input('/nВведите путь к файлу:')
+    language = input('Вветиде язык: ru или en')
+    print(pdf_to_mp3(file_path=file_path, lang = language))     
 
 if __name__ == '__main__':
     main()
