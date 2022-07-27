@@ -12,11 +12,9 @@ class Card:
               "даму", "короля", "туза"
     ]
 
-    
     def __init__(self, v, s):
         self.value = v
         self.suit = s
-
 
     def __lt__(self, c2):
         if self.value < c2.value:
@@ -29,7 +27,6 @@ class Card:
         else:
             return False
 
-
     def __gt__(self, c2):
         if self.value > c2.value:
             return True
@@ -40,7 +37,6 @@ class Card:
                 return False
         else:
             return False
-
 
     def __repr__(self):
         v = self.values[self.value] + " of " \
@@ -89,8 +85,7 @@ class Game:
         cards = self.deck.cards
         print("Поехали!")
         while len(cards) >=2:
-            m = "Нажмите Х для выхода. Нажмите любую другую клавишу \
-            для начала игры"
+            m = "Нажмите Х для выхода. Нажмите любую другую клавишу для начала игры"
             response = input(m)
             if response == "Х":
                 break            
@@ -108,12 +103,12 @@ class Game:
         win = self.winner(self.p1, self.p2)
         print("Игра окончена. {} выиграл!".format(win))
 
-        def winner(self, p1, p2):
-            if p1.wins > p2.wins:
-                return p1.name
-            if p1.wins < p2.wins:
-                return p2.name
-            return "Ничья!"
+    def winner(self, p1, p2):
+        if p1.wins > p2.wins:
+            return p1.name
+        if p1.wins < p2.wins:
+            return p2.name
+        return "Ничья!"
 
 game = Game()
 game.play_game()
